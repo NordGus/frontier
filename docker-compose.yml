@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  dev:
+    build: .
+    image: frontier-dev
+    command: tail -f /dev/null
+    volumes:
+      - .:/var/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+    
+  redis:
+    image: redis:latest
